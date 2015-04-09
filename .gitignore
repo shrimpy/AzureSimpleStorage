@@ -1,0 +1,5 @@
+AzureSimpleStorage/bin/
+AzureSimpleStorage/obj/
+AzureSimpleStorageTests/bin/
+AzureSimpleStorageTests/obj/
+packages/
