@@ -33,6 +33,10 @@ Where you don`t need to worry about data type, schema (very close to JSON).</p>
 <h3>
 <a id="sample-code" class="anchor" href="#sample-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample Code</h3>
 
+<ul>
+<li>InsertOrUpdate</li>
+</ul>
+
 <div class="highlight highlight-C#"><pre>            <span class="pl-k">var</span> proto = <span class="pl-k">new</span> TableProtocol(StorageAccountName, StorageAccountKey);
             <span class="pl-k">var</span> entity = <span class="pl-k">new</span> TableEntityModel
             {
@@ -44,6 +48,21 @@ Where you don`t need to worry about data type, schema (very close to JSON).</p>
             entity[<span class="pl-s"><span class="pl-pds">"</span>val13<span class="pl-pds">"</span></span>] = DateTime.Now;
 
             <span class="pl-k">await</span> proto.InsertOrUpdate(TestTable, entity);</pre></div>
+
+<ul>
+<li>List</li>
+</ul>
+
+<div class="highlight highlight-C#"><pre>            <span class="pl-k">var</span> proto = <span class="pl-k">new</span> TableProtocol(StorageAccountName, StorageAccountKey);
+            TableEntityModelCollection results = <span class="pl-k">await</span> proto.List(tableName, partKey, <span class="pl-c1">10</span>);
+            results = <span class="pl-k">await</span> proto.List(tableName, partKey, <span class="pl-c1">10</span>, results.ContinuationToken);</pre></div>
+
+<ul>
+<li>Get</li>
+</ul>
+
+<div class="highlight highlight-C#"><pre>            <span class="pl-k">var</span> proto = <span class="pl-k">new</span> TableProtocol(StorageAccountName, StorageAccountKey);
+            TableEntityModel result = <span class="pl-k">await</span> proto.Get(tableName, partKey, rowkey);</pre></div>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/shrimpy/AzureSimpleStorage">Azure Simple Storage Protocol</a> is maintained by <a href="https://github.com/shrimpy">shrimpy</a>.</span>
