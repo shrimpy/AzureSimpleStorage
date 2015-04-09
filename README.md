@@ -1,4 +1,4 @@
-### Welcome to Simple Azure Storage Protocol.
+### Welcome to Azure Simple Storage Protocol.
 A library that ease your way to interact with Azure Storage. Currently support Table storage only.
 Where you don`t need to worry about data type, schema (very close to JSON).
 
