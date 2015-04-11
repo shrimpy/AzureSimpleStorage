@@ -45,10 +45,17 @@ namespace AzureSimpleStorage
 			return model;
 		}
 
-		public async Task<TableEntityModelCollection> List(string tableName, string partitionKey, int segmentCount = 20, string tokenStr = null)
+		public async Task<TableEntityModelCollection> List(string tableName, string partitionKey, int segmentCount = 20, string tokenStr = null, string filter = null)
 		{
 			CloudTable table = await this.GetTable(tableName);
-			var query = new TableQuery<DynamicTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
+			var query = new TableQuery<DynamicTableEntity>()
+				.Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partitionKey));
+
+			if (filter != null)
+			{
+				query.Where(filter);
+			}
+
 			query.TakeCount = segmentCount;
 
 			TableContinuationToken token = null;
